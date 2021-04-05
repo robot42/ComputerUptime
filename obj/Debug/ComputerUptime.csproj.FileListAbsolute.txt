@@ -1,0 +1,14 @@
+D:\eh\Test\ComputerUptime\bin\Debug\ComputerUptime.exe.config
+D:\eh\Test\ComputerUptime\bin\Debug\ComputerUptime.exe
+D:\eh\Test\ComputerUptime\bin\Debug\ComputerUptime.pdb
+D:\eh\Test\ComputerUptime\obj\Debug\ComputerUptime.exe
+D:\eh\Test\ComputerUptime\obj\Debug\ComputerUptime.pdb
+D:\eh\Test\ComputerUptime\obj\Debug\ComputerUptime.csprojAssemblyReference.cache
+D:\eh\Test\ComputerUptime\obj\Debug\ComputerUptime.csproj.CoreCompileInputs.cache
+d:\eh\Projects\Playground\ComputerUptime\bin\Debug\ComputerUptime.exe.config
+d:\eh\Projects\Playground\ComputerUptime\bin\Debug\ComputerUptime.exe
+d:\eh\Projects\Playground\ComputerUptime\bin\Debug\ComputerUptime.pdb
+d:\eh\Projects\Playground\ComputerUptime\obj\Debug\ComputerUptime.csprojAssemblyReference.cache
+d:\eh\Projects\Playground\ComputerUptime\obj\Debug\ComputerUptime.csproj.CoreCompileInputs.cache
+d:\eh\Projects\Playground\ComputerUptime\obj\Debug\ComputerUptime.exe
+d:\eh\Projects\Playground\ComputerUptime\obj\Debug\ComputerUptime.pdb
