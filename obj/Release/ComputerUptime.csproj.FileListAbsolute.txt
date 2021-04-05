@@ -1,7 +1,0 @@
-D:\eh\Test\ComputerUptime\bin\Release\ComputerUptime.exe.config
-D:\eh\Test\ComputerUptime\bin\Release\ComputerUptime.exe
-D:\eh\Test\ComputerUptime\bin\Release\ComputerUptime.pdb
-D:\eh\Test\ComputerUptime\obj\Release\ComputerUptime.csprojResolveAssemblyReference.cache
-D:\eh\Test\ComputerUptime\obj\Release\ComputerUptime.exe
-D:\eh\Test\ComputerUptime\obj\Release\ComputerUptime.pdb
-D:\eh\Test\ComputerUptime\obj\Release\ComputerUptime.csproj.CoreCompileInputs.cache
