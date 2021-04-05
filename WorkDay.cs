@@ -31,5 +31,16 @@ namespace ComputerUpTime
                 End = entryTimeGenerated;
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "{0}: {1} - {2}               ({3} - {4})",
+                this.Start.ToShortDateString(),
+                this.RoundedStart.TimeOfDay,
+                this.RoundedEnd.TimeOfDay,
+                this.Start.TimeOfDay,
+                this.End.TimeOfDay);
+        }
     }
 }

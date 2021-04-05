@@ -42,10 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityMapper.cs" />
     <Compile Include="DateTimeExtension.cs" />
+    <Compile Include="IWorkDayActivity.cs" />
+    <Compile Include="IWorkDayLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkDay.cs" />
+    <Compile Include="WorkDayActivity.cs" />
+    <Compile Include="WorkDayLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
