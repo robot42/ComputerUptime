@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ComputerUpTime
+namespace System
 {
     internal static class DateTimeExtension
     {
