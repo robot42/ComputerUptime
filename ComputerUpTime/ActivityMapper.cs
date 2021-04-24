@@ -40,13 +40,13 @@ namespace ComputerUpTime
 
             if (!_workDays.Any())
             {
-                this._logger.Log(
+                _logger.Log(
                     $"The system event log does not contain any data for the last {ActivityTimeLimit.Days} days.");
                 return;
             }
 
-            _workDays.ToList().ForEach(
-                workDay => _logger.Log(workDay.Value.ToString()));
+            _workDays.Values.ToList().ForEach(
+                workDay => _logger.Log(workDay.ToString()));
         }
 
         internal static TimeSpan ActivityTimeLimit { get; } = TimeSpan.FromDays(60);
