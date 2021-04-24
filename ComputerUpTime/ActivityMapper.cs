@@ -6,11 +6,11 @@ namespace ComputerUpTime
 {
     internal class ActivityMapper
     {
-        private readonly IEnumerable<IWorkDayActivity> _activities;
+        private readonly IEnumerable<WorkDayActivity> _activities;
         private readonly IWorkDayLogger _logger;
-        private readonly Dictionary<DateTime, WorkDay> workDays = new Dictionary<DateTime, WorkDay>();
+        private readonly Dictionary<DateTime, WorkDay> _workDays = new Dictionary<DateTime, WorkDay>();
 
-        public ActivityMapper(IEnumerable<IWorkDayActivity> activities, IWorkDayLogger logger)
+        public ActivityMapper(IEnumerable<WorkDayActivity> activities, IWorkDayLogger logger)
         {
             _activities = activities;
             _logger = logger;
@@ -20,47 +20,48 @@ namespace ComputerUpTime
         {
             if (!_activities.Any())
             {
-                Console.WriteLine();
-                Console.WriteLine("The system event log does not contain any data.");
-                Console.ReadKey();
+                _logger.Log("The system event log does not contain any data.");
                 return;
             }
 
-            var oldestEntryToConsider = DateTime.Now - new TimeSpan(60, 0, 0, 0);
+            var oldestEntryToConsider = DateTime.Now - ActivityTimeLimit;
 
-            Console.WriteLine("Searching newest entries...");
-            foreach (var entry in _activities)
+            _logger.Log("Searching newest entries...");
+            _activities.ToList().ForEach(entry =>
             {
                 if (entry.TimeStamp < oldestEntryToConsider)
                 {
-                    continue;
+                    return;
                 }
 
-                WorkDay currentDay = GetCurrentDay(entry.TimeStamp);
-
+                var currentDay = GetCurrentDay(entry.TimeStamp);
                 currentDay.ExpandToInclude(entry.TimeStamp);
+            });
+
+            if (!_workDays.Any())
+            {
+                this._logger.Log(
+                    $"The system event log does not contain any data for the last {ActivityTimeLimit.Days} days.");
+                return;
             }
 
-            foreach (var workDay in workDays)
-            {
-                Console.WriteLine(
-                    "{0}: {1} - {2}               ({3} - {4})",
-                    workDay.Key.Date.ToShortDateString(),
-                    workDay.Value.RoundedStart.TimeOfDay,
-                    workDay.Value.RoundedEnd.TimeOfDay,
-                    workDay.Value.Start.TimeOfDay,
-                    workDay.Value.End.TimeOfDay);
-            }
+            _workDays.ToList().ForEach(
+                workDay => _logger.Log(workDay.Value.ToString()));
         }
+
+        internal static TimeSpan ActivityTimeLimit { get; } = TimeSpan.FromDays(60);
 
         private WorkDay GetCurrentDay(DateTime entryTimeGenerated)
         {
-            if (workDays.ContainsKey(entryTimeGenerated.Date) == false)
+            if (_workDays.TryGetValue(entryTimeGenerated.Date, out var result))
             {
-                workDays[entryTimeGenerated.Date] = new WorkDay(entryTimeGenerated.Date);
+                return result;
             }
 
-            return workDays[entryTimeGenerated.Date];
+            result = new WorkDay(entryTimeGenerated);
+            _workDays[entryTimeGenerated.Date] = result;
+
+            return result;
         }
     }
 }

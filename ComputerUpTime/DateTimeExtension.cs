@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿// ReSharper disable once CheckNamespace
 namespace System
 {
     internal static class DateTimeExtension

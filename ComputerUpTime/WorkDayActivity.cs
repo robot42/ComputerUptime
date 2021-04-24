@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace ComputerUpTime
 {
-    internal class WorkDayActivity : IWorkDayActivity
+    internal class WorkDayActivity
     {
-        public WorkDayActivity(EventLogEntry entry)
+        public WorkDayActivity(DateTime timeStamp)
         {
-            this.TimeStamp = entry.TimeGenerated;
+            this.TimeStamp = timeStamp;
         }
 
         public DateTime TimeStamp { get; }

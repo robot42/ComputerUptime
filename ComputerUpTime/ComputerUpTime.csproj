@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="ActivityMapper.cs" />
     <Compile Include="DateTimeExtension.cs" />
-    <Compile Include="IWorkDayActivity.cs" />
     <Compile Include="IWorkDayLogger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -2,6 +2,6 @@
 {
     internal interface IWorkDayLogger
     {
-        void Log(WorkDay day);
+        void Log(string text);
     }
 }
