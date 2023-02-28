@@ -1,14 +1,11 @@
-﻿using System;
+﻿namespace ComputerUpTime;
 
-namespace ComputerUpTime
+internal class WorkDayActivity
 {
-    internal class WorkDayActivity
+    public WorkDayActivity(DateTime timeStamp)
     {
-        public WorkDayActivity(DateTime timeStamp)
-        {
-            this.TimeStamp = timeStamp;
-        }
-
-        public DateTime TimeStamp { get; }
+        this.TimeStamp = timeStamp;
     }
+
+    public DateTime TimeStamp { get; }
 }

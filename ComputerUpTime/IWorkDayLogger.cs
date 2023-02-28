@@ -1,7 +1,6 @@
-﻿namespace ComputerUpTime
+﻿namespace ComputerUpTime;
+
+internal interface IWorkDayLogger
 {
-    internal interface IWorkDayLogger
-    {
-        void Log(string text);
-    }
+    void Log(string text);
 }

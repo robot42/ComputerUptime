@@ -6,11 +6,11 @@ namespace ComputerUpTime.Tests
     [ExcludeFromCodeCoverage]
     internal class WorkDayLoggerMock : IWorkDayLogger
     {
+        public List<string> Output { get; } = new List<string>();
+
         public void Log(string text)
         {
-            this.Output.Add(text);
+            Output.Add(text);
         }
-
-        public List<string> Output { get; } = new List<string>();
     }
 }
