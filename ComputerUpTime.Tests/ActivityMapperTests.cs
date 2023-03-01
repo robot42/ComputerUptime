@@ -8,10 +8,11 @@ namespace ComputerUpTime.Tests;
 [ExcludeFromCodeCoverage]
 public class ActivityMapperTests
 {
-    private ActivityMapper CreateSut(IEnumerable<WorkDayActivity> activities, out WorkDayLoggerMock loggerMock)
+    private ActivityMapper CreateSut(
+        IEnumerable<WorkDayActivity> activities,
+        out WorkDayLoggerMock loggerMock)
     {
         var timeMock = Substitute.For<ISystemTime>();
-
         timeMock.Now().Returns(DateTime.Parse("12.5.2021 00:00:00"));
         loggerMock = new WorkDayLoggerMock();
         var sut = new ActivityMapper(activities, timeMock, loggerMock);
@@ -43,9 +44,7 @@ public class ActivityMapperTests
     [Fact]
     public void ActivityOlderThan60Days_ActivityIsIgnored()
     {
-        // var loggerMock = new WorkDayLoggerMock();
-        var input = new[] {new WorkDayActivity(DateTime.Now - ActivityMapper.ActivityTimeLimit)};
-        // var sut = new ActivityMapper(input, loggerMock);
+        var input = new[] {new WorkDayActivity(DateTime.Parse("11.5.2021 23:59:59") - ActivityMapper.ActivityTimeLimit)};
         var sut = CreateSut(input, out var loggerMock);
 
         sut.Run();

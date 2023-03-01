@@ -1,4 +1,6 @@
-﻿namespace ComputerUpTime;
+﻿using System.Globalization;
+
+namespace ComputerUpTime;
 
 internal class WorkDay
 {
@@ -33,7 +35,7 @@ internal class WorkDay
     public override string ToString()
     {
         return
-            $"{Start.ToShortDateString()}:" +
+            $"{Start.ToString("d", new CultureInfo("de-DE"))}:" + // ToShortDateString()}:" +
             $" {RoundedStart.TimeOfDay:hh\\:mm} - {RoundedEnd.TimeOfDay:hh\\:mm}" +
             $"               ({Start.TimeOfDay} - {End.TimeOfDay})";
     }
