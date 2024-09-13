@@ -1,11 +1,11 @@
 ﻿namespace ComputerUpTime;
 
-internal class WorkDayActivity
+internal enum WorkDayActivityKind
 {
-    public WorkDayActivity(DateTime timeStamp)
-    {
-        this.TimeStamp = timeStamp;
-    }
-
-    public DateTime TimeStamp { get; }
+    Sleep = 42,
+    WakeUp = 507,
+    Shutdown = 13,
+    Started = 12
 }
+
+internal record WorkDayActivity(DateTime TimeStamp, WorkDayActivityKind Kind);

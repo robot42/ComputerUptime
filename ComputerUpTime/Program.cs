@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Versioning;
-using System.Xml;
 
 namespace ComputerUpTime;
 
@@ -16,17 +15,18 @@ internal class Program
         var log = new EventLog("System");
         var desiredInstanceIds =  new List<long>
         {
-            42,  // Sleep
-            507, // Wake Up
-            13,  // Shutdown
-            12   // Started
+            (long) WorkDayActivityKind.Sleep,
+            (long) WorkDayActivityKind.WakeUp,
+            (long) WorkDayActivityKind.Shutdown,
+            (long) WorkDayActivityKind.Started
         };
 
         var mapper = new ActivityMapper(
             log.Entries
                 .Cast<EventLogEntry>()
                 .Where(entry => desiredInstanceIds.Contains(entry.InstanceId))
-                .Select(entry => new WorkDayActivity(entry.TimeGenerated)),
+                .Select(entry => new WorkDayActivity(entry.TimeGenerated, (WorkDayActivityKind)entry.InstanceId))
+                .OrderBy(entry => entry.TimeStamp),
             new SystemTime(),
             new WorkDayLogger());
 
